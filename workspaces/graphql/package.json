@@ -1,0 +1,16 @@
+{
+  "name": "@me-kb/graphql",
+  "version": "0.0.1",
+  "description": "GraphQL interfaces.",
+  "repository": "git@github.com:SpecTrust-Inc/spec-protect.git",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "compile": "tsc"
+  },
+  "devDependencies": {
+    "graphql-tag": "^2.12.6",
+    "typescript": "^4.5.2"
+  }
+}

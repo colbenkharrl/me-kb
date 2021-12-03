@@ -1,0 +1,11 @@
+# Compiled Javascript
+dist/
+
+# ignore typescript build output
+tsconfig.tsbuildinfo
+
+# hide ci-generated version file
+version.txt
+
+# test coverage
+coverage/
