@@ -9,9 +9,22 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v2
+      - name: Set up node environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          cache: "yarn"
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+      - name: Install yarn dependencies
         run: |
-          ls ${{ github.workspace }}
+          yarn
+      - name: Compile graphql library
+        run: |
+          yarn graphql compile
+      - name: Test web api.
+        run: |
+          yarn web-api test
+      - name: Test web app.
+        run: |
+          yarn web-app test
       - run: echo "🍏 This job's status is ${{ job.status }}."
