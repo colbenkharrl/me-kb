@@ -5,7 +5,7 @@ import cookieSession from "cookie-session";
 import { express as voyagerMiddleware } from "graphql-voyager/middleware";
 import { schema } from "./graphql";
 import { logEvent } from "./util/logEvent";
-// import { getKnex } from "./db/connection";
+import { getKnex } from "./db/connection";
 import { resolveUserFromContext } from "./auth/resolveUserFromContext";
 import { ServerContext } from "./types";
 
@@ -22,8 +22,8 @@ type ServerInitConfig = {
  */
 export const initServer = async ({ version }: ServerInitConfig) => {
   // create database connection client
-  // logEvent(`Initializing database connection client.`, "startup");
-  // const knex = getKnex();
+  logEvent(`Initializing database connection client.`, "startup");
+  const knex = getKnex();
 
   // initialize the apollo server
   logEvent(`Initializing ApolloServer application.`, "startup");
@@ -38,7 +38,7 @@ export const initServer = async ({ version }: ServerInitConfig) => {
 
       const newContext: ServerContext = {
         ...context,
-        // knex,
+        knex,
         user,
       };
 
@@ -95,7 +95,7 @@ export const initServer = async ({ version }: ServerInitConfig) => {
 
   /**
    * Endpoint to serve the version of the code (commit SHA) currently running on
-   * this Hub Server instance.
+   * this web api instance.
    */
   app.get("/version", (_req, res) => {
     res.json({ version });
@@ -103,6 +103,6 @@ export const initServer = async ({ version }: ServerInitConfig) => {
 
   return {
     app,
-    // knex,
+    knex,
   };
 };

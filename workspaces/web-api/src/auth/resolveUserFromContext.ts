@@ -10,11 +10,11 @@ export const resolveUserFromContext = async (context: ExpressContext) => {
 
   const userToken = decodedToken(context.req, process.env.WEB_API_JWT_SECRET);
 
-  if (userToken?.id && userToken.pwHash) {
+  if (userToken?.id && userToken.pw_hash) {
     const userRows = await knex("users")
       .where("id", "=", userToken.id)
       .where("email", "=", userToken.email)
-      .where("password", "=", userToken.pwHash)
+      .where("pw_hash", "=", userToken.pw_hash)
       .where("is_active", "=", true)
       .limit(1);
 

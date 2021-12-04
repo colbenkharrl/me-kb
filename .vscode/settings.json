@@ -3,14 +3,5 @@
   "[typescript]": {
     // prettier formats .tsx on save without this, but not .ts for some reason.
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "eslint": {
-    // tell the eslint plugin where to find our js projects
-    // details: https://github.com/microsoft/vscode-eslint/issues/696#issuecomment-542592372
-    "workingDirectories": [
-      "hub/hub-client"
-      // TODO: when we hook up eslint for hub-server, it will also need to be
-      // added here for the editor extension to function properly.
-    ]
   }
 }
