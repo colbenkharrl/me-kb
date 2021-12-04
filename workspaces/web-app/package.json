@@ -76,7 +76,8 @@
       "!src/**/*-test{.ts,.tsx}",
       "!src/serviceWorker.js",
       "!src/reportWebVitals.js",
-      "!src/index.tsx"
+      "!src/index.tsx",
+      "!**/__generated__/*"
     ],
     "coverageThreshold": {
       "global": {

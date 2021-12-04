@@ -9,8 +9,6 @@ export const QueryComponent: FC = () => {
   const { data, loading } =
     useQuery<QueryComponentQueryType>(QueryComponentQuery);
 
-  console.log(data, loading);
-
   return (
     <p>{loading ? "Loading..." : data?.greeting?.value || "No greeting."}</p>
   );

@@ -3,11 +3,12 @@ import { Mock } from "../../Mock";
 import { QueryComponent } from "../QueryComponent";
 
 test("renders greeting", async () => {
+  const value = "test greeting";
   render(
-    <Mock>
+    <Mock customResolvers={{ Greeting: () => ({ value }) }}>
       <QueryComponent />
     </Mock>
   );
-  const linkElement = await screen.findByText("Hello, world!");
+  const linkElement = await screen.findByText(value);
   expect(linkElement).toBeInTheDocument();
 });
