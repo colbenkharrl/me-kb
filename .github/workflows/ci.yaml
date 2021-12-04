@@ -24,6 +24,9 @@ jobs:
       - name: Install yarn dependencies
         run: |
           yarn
+      - name: Source environment
+        run: |
+          yarn source-local
       - name: Compile graphql library.
         run: |
           yarn graphql compile
