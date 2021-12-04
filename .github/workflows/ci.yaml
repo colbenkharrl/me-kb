@@ -1,7 +1,7 @@
-name: GitHub Actions Demo
+name: CI
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  lint_test_build:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -18,13 +18,25 @@ jobs:
       - name: Install yarn dependencies
         run: |
           yarn
-      - name: Compile graphql library
+      - name: Compile graphql library.
         run: |
           yarn graphql compile
+      - name: Lint web api.
+        run: |
+          yarn web-api lint
+      - name: Lint web app.
+        run: |
+          yarn web-app lint
       - name: Test web api.
         run: |
           yarn web-api test
       - name: Test web app.
         run: |
-          yarn web-app test
+          yarn web-app test --coverage=true --silent
+      - name: Build web api.
+        run: |
+          yarn web-api build-prod
+      - name: Build web app.
+        run: |
+          yarn web-app build
       - run: echo "🍏 This job's status is ${{ job.status }}."

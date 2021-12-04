@@ -1,3 +1,5 @@
+import { Resolver } from "@apollo/client";
+
 /**
  * Given a map of mock GraphQL resolver functions, merge in a map of
  * desired mocks. Generally, `target` will be the default mocked values,
@@ -5,7 +7,10 @@
  *
  * Source: https://gist.github.com/hellendag/2aa9ad1f9b771f38802760c269bb1b76
  */
-export const mergeResolvers = (target, input) => {
+export const mergeResolvers = (
+  target: Record<string, Resolver>,
+  input: Record<string, Resolver>
+) => {
   const inputTypenames = Object.keys(input);
   const merged = inputTypenames.reduce(
     (accum, key) => {
