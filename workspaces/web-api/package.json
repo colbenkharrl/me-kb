@@ -13,7 +13,11 @@
     "start": "node ./dist/bundle.js",
     "test": "jest",
     "lint": "eslint .",
-    "test-ci": "CI=true yarn test --maxWorkers=2 --silent"
+    "test-ci": "CI=true yarn test --maxWorkers=2 --silent",
+    "knex": "knex",
+    "migrate-dev": "yarn knex migrate:latest --env development",
+    "seed-dev": "yarn knex seed:run --env development",
+    "sqlite": "sqlite3 ./sqlite/dev.sqlite3"
   },
   "dependencies": {
     "@graphql-tools/schema": "^8.3.1",
@@ -30,6 +34,7 @@
     "node-fetch": "^3.1.0",
     "nodemailer": "^6.7.2",
     "pg": "^8.7.1",
+    "sqlite3": "^5.0.2",
     "tslint": "^6.1.3",
     "uuid": "^8.3.2"
   },

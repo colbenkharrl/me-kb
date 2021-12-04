@@ -2,7 +2,7 @@ import { initServer } from "./initServer";
 import { getVersionFromFile } from "./util/getVersionFromFile";
 import { logEvent } from "./util/logEvent";
 
-logEvent("Initializing Hub Server.", "startup");
+logEvent("Initializing Web API.", "startup");
 
 // get the version from version.txt for use in the version endpoint
 getVersionFromFile()

@@ -35,7 +35,7 @@ export const getGQLString = (doc: any) => {
 
 /**
  * Simple getter for the supertest request object singleton which starts up the
- * Hub Server application with an optionally provided version.
+ * API Server application with an optionally provided version.
  * @param version string
  * @returns Promise<SupertestRequest>
  */
@@ -43,12 +43,9 @@ export const getSupertestRequest = async (
   version = "test-version"
 ): Promise<SuperTest<Test>> => {
   if (!request) {
-    const {
-      app,
-      // knex,
-    } = await initServer({ version });
+    const { app, knex } = await initServer({ version });
     request = supertest(app);
-    // dbConnection = knex;
+    dbConnection = knex;
   }
   return request;
 };

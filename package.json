@@ -5,7 +5,8 @@
     "web-app": "yarn workspace @me-kb/web-app",
     "web-api": "yarn workspace @me-kb/web-api",
     "graphql": "yarn workspace @me-kb/graphql",
-    "source-local": "set -a && source .env"
+    "source-local": "set -a && source .env",
+    "knex": "yarn web-api knex"
   },
   "workspaces": [
     "workspaces/web-app",

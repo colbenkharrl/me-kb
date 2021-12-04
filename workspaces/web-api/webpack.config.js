@@ -27,7 +27,7 @@ module.exports = {
   externals: {
     // Possible drivers for knex - we'll ignore them
     "pg-native": "pg-native",
-    sqlite3: "sqlite3",
+    sqlite3: "commonjs sqlite3",
     "pg-query-stream": "pg-query-stream",
     oracledb: "oracledb",
     mysql2: "mysql2",

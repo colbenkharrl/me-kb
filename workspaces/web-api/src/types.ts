@@ -1,10 +1,10 @@
 import { ExpressContext } from "apollo-server-express";
-import { GraphQLResolveInfo } from "graphql";
-// import { Knex } from "knex";
+import { GraphQLFieldResolver, GraphQLResolveInfo } from "graphql";
+import { Knex } from "knex";
 import { UserRecord } from "./db/types";
 
 export type ServerContext = ExpressContext & {
-  //   knex: Knex<any, unknown[]>;
+  knex: Knex<any, unknown[]>;
   user: UserRecord | undefined;
 };
 
@@ -15,4 +15,8 @@ export type FieldResolverArgs = [
   info: GraphQLResolveInfo
 ];
 
-export type FieldResolver = (...args: FieldResolverArgs) => any;
+export type FieldResolver = GraphQLFieldResolver<
+  any,
+  ServerContext,
+  Record<string, any>
+>;
